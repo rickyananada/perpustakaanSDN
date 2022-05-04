@@ -19,16 +19,18 @@ Route::group(['domain' => ''], function() {
         Route::middleware(['auth:web'])->group(function(){
             Route::redirect('/', 'dashboard', 301);
             Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-            Route::resource('obat', VisitorController::class);
             Route::resource('member', MemberController::class);
             Route::resource('visitor', VisitorController::class);
             
             // BOOK
             Route::prefix('book')->name('book.')->group(function(){
                 Route::get('', [BookController::class, 'index'])->name('index');
-                Route::get('edit', [BookController::class, 'edit'])->name('edit');
+                Route::get('create', [BookController::class, 'create'])->name('create');
+                Route::get('{book}/edit', [BookController::class, 'edit'])->name('edit');
                 Route::post('cpassword', [BookController::class, 'cpassword'])->name('cpassword');
-                Route::post('save', [BookController::class, 'save'])->name('save');
+                Route::post('save', [BookController::class, 'store'])->name('store');
+                Route::patch('update', [BookController::class, 'update'])->name('update');
+                Route::delete('destroy', [BookController::class, 'destroy'])->name('destroy');
             });
 
               // BORROW

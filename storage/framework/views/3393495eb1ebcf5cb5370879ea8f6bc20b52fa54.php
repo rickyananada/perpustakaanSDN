@@ -1,4 +1,9 @@
-<x-web-layout title="Data Pengunjung">
+<?php if (isset($component)) { $__componentOriginal4f561617d80b81635ce1c372fc1de3f039937f48 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\WebLayout::class, ['title' => 'Data Peminjaman']); ?>
+<?php $component->withName('web-layout'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
     <div id="content_list">
         <div class="post d-flex flex-column-fluid" id="kt_post">
             <div id="kt_content_container" class="container-xxl">
@@ -18,7 +23,7 @@
                             </div>
                             <div class="card-toolbar">
                                 <div class="d-flex justify-content-end">
-                                    <button type="button" onclick="load_input('{{route('web.visitor.create')}}');" class="btn btn-sm btn-primary">Tambah Data</button>
+                                    <button type="button" onclick="load_input('<?php echo e(route('web.member.create')); ?>');" class="btn btn-sm btn-primary">Tambah Data</button>
                                 </div>
                             </div>
                         </div>
@@ -33,9 +38,14 @@
         </div>
     </div>
     <div id="content_input"></div>
-    @section('custom_js')
+    <?php $__env->startSection('custom_js'); ?>
         <script>
             load_list(1);
         </script>
-    @endsection
-</x-web-layout>
+    <?php $__env->stopSection(); ?>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal4f561617d80b81635ce1c372fc1de3f039937f48)): ?>
+<?php $component = $__componentOriginal4f561617d80b81635ce1c372fc1de3f039937f48; ?>
+<?php unset($__componentOriginal4f561617d80b81635ce1c372fc1de3f039937f48); ?>
+<?php endif; ?><?php /**PATH D:\KULIAH\DICODING\laragon\www\perpustakaanSDN\resources\views/pages/borrow/main.blade.php ENDPATH**/ ?>

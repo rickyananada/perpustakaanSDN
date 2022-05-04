@@ -1,4 +1,4 @@
-<x-web-layout title="Data Pengunjung">
+<x-web-layout title="Data Peminjaman">
     <div id="content_list">
         <div class="post d-flex flex-column-fluid" id="kt_post">
             <div id="kt_content_container" class="container-xxl">
@@ -18,7 +18,7 @@
                             </div>
                             <div class="card-toolbar">
                                 <div class="d-flex justify-content-end">
-                                    <button type="button" onclick="load_input('{{route('web.visitor.create')}}');" class="btn btn-sm btn-primary">Tambah Data</button>
+                                    <button type="button" onclick="load_input('{{route('web.book.create')}}');" class="btn btn-sm btn-primary">Tambah Data</button>
                                 </div>
                             </div>
                         </div>

@@ -2,28 +2,44 @@
     <thead>
         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
             <th class="min-w-125px">No</th>
-            <th class="min-w-125px">Nama Pengunjung</th>
-            <th class="min-w-125px">Jenis Kelamin</th>
-            <th class="min-w-125px">Waktu Masuk</th>
+            <th class="min-w-125px">Nama Buku</th>
+            <th class="min-w-125px">Jenis Buku</th>
+            <th class="min-w-125px">Tahun Terbit</th>
+            <th class="min-w-125px">Penerbit</th>
+            <th class="min-w-125px">Status</th>
             <th class="text-end min-w-70px">Aksi</th>
         </tr>
     </thead>
     <tbody class="fw-bold text-gray-600">
-        @foreach ($collection as $item)
+        <?php $__currentLoopData = $collection; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <tr>
             <td>
-                {{ $loop->iteration }} 
+                <?php echo e($loop->iteration); ?> 
             </td>
+
             <td>
-                {{ $item->user->name }}
+                <?php echo e($item->name); ?>
+
             </td>
 
             <td class="w-35px me-3">
-                {{ ($item->gender == 'male') ? 'Perempuan' : 'Laki - Laki'  }}
+                <?php echo e($item->type); ?>
+
             </td>
 
             <td>
-                {{ $item->visit_at  }}
+                <?php echo e($item->year_release); ?>
+
+            </td>
+
+            <td>
+                <?php echo e($item->publisher); ?>
+
+            </td>
+
+            <td>
+                <?php echo e($item->status); ?>
+
             </td>
             
             <td class="text-end">
@@ -38,16 +54,16 @@
                     </button>
                     <div class="dropdown-menu menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" aria-labelledby="aksi">
                         <div class="menu-item px-3">
-                            <a href="javascript:;" onclick="load_input('{{route('web.visitor.edit',$item->id)}}');" class="menu-link px-3">Ubah</a>
+                            <a href="javascript:;" onclick="load_input('<?php echo e(route('web.book.edit',$item->id)); ?>');" class="menu-link px-3">Ubah</a>
                         </div>
                         <div class="menu-item px-3">
-                            <a href="javascript:;" onclick="handle_confirm('Apakah Anda Yakin?','Yakin','Tidak','DELETE','{{route('web.visitor.destroy',$item->id)}}');" class="menu-link px-3">Hapus</a>
+                            <a href="javascript:;" onclick="handle_confirm('Apakah Anda Yakin?','Yakin','Tidak','DELETE','<?php echo e(route('web.book.destroy',$item->id)); ?>');" class="menu-link px-3">Hapus</a>
                         </div>
                     </div>
                 </div>
             </td>
         </tr>
-        @endforeach
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </tbody>
 </table>
-{{$collection->links('theme.web.pagination')}}
+<?php echo e($collection->links('theme.web.pagination')); ?><?php /**PATH D:\KULIAH\DICODING\laragon\www\perpustakaanSDN\resources\views/pages/book/list.blade.php ENDPATH**/ ?>
